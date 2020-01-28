@@ -1,0 +1,32 @@
+version: '3.7'
+
+services:
+  db:
+    container_name: percona-server
+    image: percona:8.0
+    restart: always
+    volumes:
+      - ./data/db:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - MYSQL_DATABASE=mediawiki
+      - MYSQL_USER=mdwiki
+      - MYSQL_PASSWORD=${MYSQL_MEDIAWIKI_PASSWORD}
+    expose:
+      - "3306"
+
+  wiki:
+    container_name: mediawiki_server
+    image: mediawiki:1.34
+    restart: always
+    depends_on:
+      - db
+    volumes:
+      - ./data/mediawiki/images:/var/www/html/images
+      - ./data/mediawiki/config/LocalSettings.php:/var/www/html/LocalSettings.php
+    links:
+      - db
+    expose:
+      - "80"
+    ports:
+      - "${MEDIAWIKI_HTTP_PORT}:80"
