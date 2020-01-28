@@ -1,0 +1,1 @@
+# MediaWiki Docker Compose Image
