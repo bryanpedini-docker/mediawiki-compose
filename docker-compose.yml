@@ -2,8 +2,8 @@ version: '3.7'
 
 services:
   db:
-    container_name: percona-server
-    image: percona:8.0
+    container_name: mediawiki_database
+    image: mariadb:10
     restart: always
     volumes:
       - ./data/db:/var/lib/mysql
@@ -16,7 +16,7 @@ services:
       - "3306"
 
   wiki:
-    container_name: mediawiki_server
+    container_name: mediawiki_webserver
     image: mediawiki:1.34
     restart: always
     depends_on:
