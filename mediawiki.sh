@@ -10,12 +10,16 @@ cat << "EOF"
 EOF
 
 function show_help () {
-    echo "Usage: $0 [help] [install] [full-upgrade]"
+    echo "Usage: $0 [help] [install] [start] [stop] [full-upgrade]"
     cat << "EOF"
   Parameters:
       help: Displays this help message and exits.
 
       install: Installs the necessary files, starts the service and exits.
+
+      start: Starts the servers, brings the service online and exits.
+
+      stop: Brings the service offline, stops the servers gracefully and exits.
 
       full-upgrade: Deletes the servers and their images, maintaining the data, recreates everything from scratch and exits.
 
@@ -30,6 +34,14 @@ for par in "$@"; do
             ;;
         "install")
             docker-compose up -d
+            exit 0
+            ;;
+        "start")
+            docker-compose up -d
+            exit 0
+            ;;
+        "stop")
+            docker-compose down
             exit 0
             ;;
         "full-upgrade")
