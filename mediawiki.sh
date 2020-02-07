@@ -37,11 +37,11 @@ for par in "$@"; do
             exit 0
             ;;
         "start")
-            docker-compose up -d
+            docker-compose start -d
             exit 0
             ;;
         "stop")
-            docker-compose down
+            docker-compose stop
             exit 0
             ;;
         "full-upgrade")
