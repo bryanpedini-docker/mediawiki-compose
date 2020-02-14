@@ -48,9 +48,9 @@ for par in "$@"; do
             docker-compose down
             docker network rm mediawiki
             docker rmi mediawiki:1.34
-            docker rmi percona:8.0
+            docker rmi mariadb:10
             docker pull mediawiki:1.34
-            docker pull percona:8.0
+            docker pull mariadb:10
             docker-compose up -d
             exit 0
             ;;
