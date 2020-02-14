@@ -10,7 +10,7 @@ cat << "EOF"
 EOF
 
 function show_help () {
-    echo "Usage: $0 [help] [install] [start] [stop] [full-upgrade]"
+    echo "Usage: $0 [help] <install | start | stop | full-upgrade>"
     cat << "EOF"
   Parameters:
       help: Displays this help message and exits.
