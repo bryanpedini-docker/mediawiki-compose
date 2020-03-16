@@ -17,7 +17,7 @@ services:
 
   wiki:
     container_name: mediawiki_webserver
-    image: mediawiki:1.35
+    image: mediawiki:1.34.0
     restart: always
     depends_on:
       - db
